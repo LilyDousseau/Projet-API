@@ -1,0 +1,32 @@
+meta {
+  name: Create event
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{url}}/events
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+      "id": "456",
+      "title": "New Event",
+      "lead_text": "This is a new event.",
+      "date_start": "2024-12-01T00:00:00",
+      "date_end": "2024-12-02T00:00:00",
+      "cover_url": "https://example.com/image.jpg",
+      "address_name": "Event Venue",
+      "address_street": "123 Main Street",
+      "latitude": 48.8566,
+      "longitude": 2.3522,
+      "price_type": "free",
+      "isFavorite": false
+  }
+}

@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "192181e0-e853-4f90-94a1-16238c77a6ff",
+		"name": "EventService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all events",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/events",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get event by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/events?id=123",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mark event as favorite",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/events/123/favorite",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						"123",
+						"favorite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create event",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"456\",\n    \"title\": \"New Event\",\n    \"lead_text\": \"This is a new event.\",\n    \"date_start\": \"2024-12-01T00:00:00\",\n    \"date_end\": \"2024-12-02T00:00:00\",\n    \"cover_url\": \"https://example.com/image.jpg\",\n    \"address_name\": \"Event Venue\",\n    \"address_street\": \"123 Main Street\",\n    \"latitude\": 48.8566,\n    \"longitude\": 2.3522,\n    \"price_type\": \"free\",\n    \"isFavorite\": false\n}"
+				},
+				"url": {
+					"raw": "{{url}}/events",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search events",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/events/search?query=concert",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "concert"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete event by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/events/123",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"events",
+						"123"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Search events
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{url}}/events/search?query=concert
+  body: none
+  auth: none
+}
+
+params:query {
+  query: concert
+}
+
+headers {
+  Content-Type: application/json
+}

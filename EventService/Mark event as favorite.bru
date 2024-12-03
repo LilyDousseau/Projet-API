@@ -1,0 +1,15 @@
+meta {
+  name: Mark event as favorite
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{url}}/events/123/favorite
+  body: none
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
