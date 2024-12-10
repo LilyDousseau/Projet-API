@@ -88,14 +88,14 @@ Avant de démarrer, assurez-vous d’avoir les éléments suivants installés :
 ## **Installation**
 
 1. Clonez le dépôt sur votre machine locale :
-   git clone https://github.com/<votre-utilisateur>/<votre-repo>.git
+   git clone https://github.com/LilyDousseau/Projet-API.git
 
 2. Installer les dépendances : 
   npm install
 
 3. Démarrer le serveur : 
   npm run start
-  L'application sera disponible sur l'url https://app-1e608587-c9f5-480b-99ec-e45c317aa5b5.cleverapps.io/events
+  L'application sera disponible sur l'url https://app-1e608587-c9f5-480b-99ec-e45c317aa5b5.cleverapps.io
 
 ---
 
