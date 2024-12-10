@@ -1,3 +1,7 @@
+/**
+ Permet de définir l'interface d'un événement que nous allons utiliser dans notre application
+ */
+
 export interface Event {
     id: string;
     title: string;

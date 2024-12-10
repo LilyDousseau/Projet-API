@@ -1,3 +1,8 @@
+/**
+Permet de définir l'interface d'un événement récupérer depuis le l'url des evenements 
+ * */ 
+
+
 export interface ApiEvent {
     id: string;
     url: string;

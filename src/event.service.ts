@@ -118,15 +118,21 @@ private mapApiEventToEvent(apiEvents: ApiEvent[]): Event[] {
         return this.eventList;
     }
 
+    /**
+     * Créer un nouvel événement.
+     */
     createEvent(event: Event): Event {
     this.eventList.push(event); // Ajout dans le tableau
     return event; // Retourne l'objet ajouté
     }
 
+    /**
+     * Rechercher des événements par une caractéristique (gratuit, payant, concert,...).
+     */
     search(query: string): Event[] {
         return this.eventList.filter(event =>
           event.title.toLowerCase().includes(query.toLowerCase())
-        ); // Filtre les événements contenant le texte recherché
+        ); 
       }
 
 }

@@ -1,42 +1,121 @@
-Part of Web Development - ISMIN
+# **Event Service API**
 
-Course followed by students of Mines St Etienne, ISMIN - M2 Computer Science.
+Event Service API est une application back-end développée avec NestJS permettant de gérer un ensemble d'événements. Elle fournit des fonctionnalités pour créer, consulter, modifier, rechercher et supprimer des événements.
 
-[![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![TypeScript](https://badges.frapsoft.com/typescript/love/typescript.png?v=101)](https://github.com/ellerbrock/typescript-badges/)
-[![Mines St Etienne](./logo.png)](https://www.mines-stetienne.fr/)
+## **Table des matières**
 
-# TP5: Deploy a NestJS API to Clever Cloud
+- [Contenu](#Contenu)
+- [Fonctionnalités](#fonctionnalités)
+- [Prérequis](#prérequis)
+- [Installation](#installation)
+- [Endpoints](#endpoints)
 
-## 📝 Goal
 
-The goal of this TP is to deploy the NestJS API we implemented in previous TPs in The Cloud ☁️.
+---
 
-Using AWS, Azure, GCP? 
+## **Contenu**
 
-No! Using a French 🇫🇷 IT automation company: [Clever Cloud](https://www.clever-cloud.com/en/) 
-> Clever Cloud provides an IT Automation Platform for developers with bulletproof infrastructure, auto-scaling, fair pricing
+1. ApiEvent
 
-### Step 1: ♻️ Prepare the sources
+- Description : Interface représentant les événements tels qu'ils sont reçus depuis une source externe (par exemple, une API).
 
-Copy/paste `src` and `package.json` of TP4 in this project. Run `npm install` to fetch the dependencies.
+- Contenu :
+Champs : id, title, lead_text, date_start, date_end, cover_url, address_name, address_street, latitude, longitude, price_type, etc.
+Utilisé pour la conversion des données externes vers l'interface interne Event.
 
-### Step 2: ☁️ Prepare Clever Cloud
+2. event.controller.ts
 
-Login to Clever Cloud and create a Node.JS application with option detailed in course slides.
+- Description : Gère les requêtes HTTP entrantes et appelle les services appropriés.
 
-### Step 3: 🏗 Adapt the app to make it buildable and runnable on Clever Cloud  
+- Principales méthodes :
+getEvents : Récupérer tous les événements ou un événement spécifique par ID.
+markAsFavorite : Marquer ou démarquer un événement comme favori.
+createEvent : Créer un nouvel événement.
+searchEvents : Rechercher des événements par mot-clé.
+deleteEvent : Supprimer un événement par ID.
 
- - Make the port used by the app configurable using an environment variable: `PORT=8080 npm run start` (on Windows: `set PORT=8080 && npm run start`) should start app on port 8080
- - Rework/add NPM scripts in `package.json`:
-   - `install`: should build the app
-   - `start`: should start the built app  
+3. event.service.ts
 
-### Step 4: 🚀 Send to Clever Cloud
- 
- - Add Clever Cloud git remote
- - Commit all local changes
- - Push branch to Clever Cloud remote
- - Check everything is OK on Clever Cloud
- - Open Postman, create a new environment with `url` equal to the Clever Cloud one, try to do some requests! 
+- Description : Contient la logique métier pour gérer les événements.
+
+- Principales méthodes :
+findAll : Récupérer tous les événements.
+getEvent : Récupérer un événement spécifique par ID.
+createEvent : Ajouter un nouvel événement à la liste.
+deleteEvent : Supprimer un événement en fonction de son ID.
+search : Rechercher des événements correspondant à un mot-clé.
+
+4. event.module.ts
+
+- Description : Déclare et configure les dépendances pour le module Event.
+
+- Rôle : Connecte le contrôleur (EventController) et le service (EventService) afin qu'ils puissent interagir.
+
+5. Event
+
+- Description : Interface représentant un événement dans l'application.
+
+- Champs principaux :
+id : Identifiant unique de l'événement.
+title : Titre de l'événement.
+lead_text : Description courte.
+date_start et date_end : Dates de début et de fin.
+latitude et longitude : Coordonnées géographiques.
+isFavorite : Indique si l'événement est marqué comme favori.
+
+---
+
+## **Fonctionnalités**
+
+- Récupération de tous les événements ou d'un événement spécifique par ID.
+- Création d’un nouvel événement.
+- Marquage ou démarquage d’un événement comme favori.
+- Recherche d’événements par mot-clé.
+- Suppression d’un événement par ID.
+
+---
+
+## **Prérequis**
+
+Avant de démarrer, assurez-vous d’avoir les éléments suivants installés :
+
+- [Node.js](https://nodejs.org/) (version 16 ou plus)
+- [npm](https://www.npmjs.com/)
+- [Git]
+
+---
+
+## **Installation**
+
+1. Clonez le dépôt sur votre machine locale :
+   git clone https://github.com/<votre-utilisateur>/<votre-repo>.git
+
+2. Installer les dépendances : 
+  npm install
+
+3. Démarrer le serveur : 
+  npm run start
+  L'application sera disponible sur l'url https://app-1e608587-c9f5-480b-99ec-e45c317aa5b5.cleverapps.io/events
+
+---
+
+## **Endpoints**
+
+1. Récupérer tous les événements
+GET /events
+
+2. Récupérer un événement spécifique
+GET /events?id={id}
+
+3. Marquer un événement comme favori
+PATCH /events/{id}/favorite
+
+4. Créer un nouvel événement
+POST /events
+
+5. Supprimer un événement
+DELETE /events/{id}
+
+6. Rechercher des événements
+GET /events/search?query={mot-clé}
+

@@ -42,11 +42,17 @@ export class EventController {
     return `Event with ID ${id} has been update.`;
     }
 
+    /**     
+     * Créer un nouvel événement.
+    */
     @Post()
     async createEvent(@Body() event: Event): Promise<Event> {
     return this.eventService.createEvent(event); // Appel au service pour sauvegarder les données
     }
 
+    /**
+    * Rechercher des événements.
+    */ 
     @Get('search')
     async searchEvents(@Query('query') query: string): Promise<Event[]> {
     return this.eventService.search(query); // Appel au service pour effectuer la recherche
